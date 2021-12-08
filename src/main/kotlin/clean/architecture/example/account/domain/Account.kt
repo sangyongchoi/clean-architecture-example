@@ -25,7 +25,7 @@ class Account(
 
     fun getId() = id
 
-    private fun calculateBalance(): Money {
+    fun calculateBalance(): Money {
         return Money.add(
             baselineBalance,
             activityWindow.calculateBalance(id)
@@ -67,6 +67,6 @@ class Account(
     }
 
     data class AccountId(
-        val value: String,
+        val value: Long,
     )
 }

@@ -1,4 +1,4 @@
-package clean.architecture.example.account.application.`in`
+package clean.architecture.example.account.application.port.`in`
 
 import clean.architecture.example.account.domain.Account
 import clean.architecture.example.account.domain.Money
