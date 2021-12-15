@@ -4,26 +4,10 @@ import java.time.LocalDateTime
 
 
 class Account(
-    private val id: AccountId?,
-    private val baselineBalance: Money,
-    private val activityWindow: ActivityWindow,
+    val id: AccountId?,
+    val baselineBalance: Money,
+    val activityWindow: ActivityWindow,
 ) {
-    fun withoutId(
-        baselineBalance: Money?,
-        activityWindow: ActivityWindow?
-    ): Account {
-        return Account(null, baselineBalance!!, activityWindow!!)
-    }
-
-    fun withId(
-        accountId: AccountId?,
-        baselineBalance: Money?,
-        activityWindow: ActivityWindow?
-    ): Account {
-        return Account(accountId!!, baselineBalance!!, activityWindow!!)
-    }
-
-    fun getId() = id
 
     fun calculateBalance(): Money {
         return Money.add(
@@ -37,6 +21,7 @@ class Account(
             return false
         }
         val withdrawal = Activity(
+            null,
             id,
             id,
             targetAccountId!!,
@@ -55,6 +40,7 @@ class Account(
 
     fun deposit(money: Money?, sourceAccountId: AccountId?): Boolean {
         val deposit = Activity(
+            null,
             id,
             sourceAccountId!!,
             id,
@@ -69,4 +55,21 @@ class Account(
     data class AccountId(
         val value: Long,
     )
+
+    companion object {
+        fun withoutId(
+            baselineBalance: Money?,
+            activityWindow: ActivityWindow?
+        ): Account {
+            return Account(null, baselineBalance!!, activityWindow!!)
+        }
+
+        fun withId(
+            accountId: AccountId?,
+            baselineBalance: Money?,
+            activityWindow: ActivityWindow?
+        ): Account {
+            return Account(accountId!!, baselineBalance!!, activityWindow!!)
+        }
+    }
 }

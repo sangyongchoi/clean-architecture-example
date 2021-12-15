@@ -3,7 +3,7 @@ package clean.architecture.example.account.domain
 import java.math.BigInteger
 
 class Money(
-    private var amount: BigInteger,
+    var amount: BigInteger,
 ) {
 
     val isPositiveOrZero: Boolean
@@ -36,7 +36,7 @@ class Money(
     companion object {
         var ZERO = of(0L)
 
-        private fun of(value: Long): Money {
+        fun of(value: Long): Money {
             return Money(BigInteger.valueOf(value))
         }
 

@@ -4,5 +4,5 @@ import clean.architecture.example.account.domain.Account
 import java.time.LocalDateTime
 
 interface LoadAccountPort {
-    fun loadAccount(accountId: Account.AccountId, baselineDate: LocalDateTime): Account
+    fun loadAccount(accountId: Account.AccountId, baselineDate: LocalDateTime): Account?
 }
